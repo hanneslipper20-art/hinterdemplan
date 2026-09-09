@@ -1,0 +1,10 @@
+const toggle=document.querySelector('.nav-toggle');
+const nav=document.querySelector('.main-nav');
+toggle?.addEventListener('click',()=>{const open=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));});
+nav?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');toggle?.setAttribute('aria-expanded','false');}));
+document.getElementById('year').textContent=new Date().getFullYear();
+const lightbox=document.getElementById('lightbox');
+const lbImg=lightbox?.querySelector('img');
+document.querySelectorAll('.gallery-item').forEach(btn=>btn.addEventListener('click',()=>{if(!lightbox||!lbImg)return;lbImg.src=btn.dataset.img;lightbox.showModal();}));
+lightbox?.querySelector('.lightbox-close')?.addEventListener('click',()=>lightbox.close());
+lightbox?.addEventListener('click',e=>{if(e.target===lightbox)lightbox.close();});
